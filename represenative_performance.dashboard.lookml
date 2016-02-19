@@ -10,11 +10,6 @@
     explore: opportunity
     field: opportunity_owner.name
     
-  - name: sales_segment
-    type: field_filter
-    explore: account
-    field: account.business_segment
-    default_value: 'Enterprise'
 
   elements:
 
@@ -25,7 +20,6 @@
     explore: opportunity
     measures: [opportunity.count_won]
     listen:
-      sales_segment: account.business_segment
       sales_rep: opportunity_owner.name
     filters:
       opportunity.close_date: 'this quarter'
@@ -42,7 +36,6 @@
     explore: opportunity
     measures: [opportunity.total_revenue]
     listen:
-      sales_segment: account.business_segment
       sales_rep: opportunity_owner.name
     filters:
       opportunity.close_date: 'this quarter'
@@ -59,7 +52,6 @@
     explore: opportunity
     measures: [opportunity.count_lost]
     listen:
-      sales_segment: account.business_segment
       sales_rep: opportunity_owner.name
     filters:
       opportunity.close_date: 'this quarter'
@@ -76,7 +68,6 @@
     explore: opportunity
     measures: [opportunity.win_percentage]
     listen:
-      sales_segment: account.business_segment
       sales_rep: opportunity_owner.name
     filters:
       opportunity.close_date: 'this quarter'
@@ -85,6 +76,7 @@
     text_color: '#49719a'
     width: 3
     height: 2
+    sorts: [opportunity.win_percentage desc]
     
   - name: opportunities_to_wins_trend_peers
     title: 'Opportunities to Wins Trend vs. Peers'
@@ -101,7 +93,6 @@
       value_format: '#.0%'
     hidden_fields: [opportunity.count_won, opportunity.count]
     listen:
-      sales_segment: opportunity_owner.department_select
       sales_rep: opportunity_owner.name_select 
     filters:
       opportunity.created_month: 9 months ago for 9 months
@@ -140,7 +131,6 @@
     dimensions: [opportunity_owner.rep_comparitor]
     measures: [opportunity.average_revenue_won]
     listen:
-      sales_segment: opportunity_owner.department_select
       sales_rep: opportunity_owner.name_select 
     sorts: [opportunity_owner.rep_comparitor]
     limit: 500
@@ -176,7 +166,6 @@
     dimensions: [opportunity_owner.rep_comparitor]
     measures: [opportunity.win_percentage]
     listen:
-      sales_segment: opportunity_owner.department_select
       sales_rep: opportunity_owner.name_select 
     sorts: [opportunity_owner.rep_comparitor]
     limit: 500
@@ -212,7 +201,6 @@
     dimensions: [opportunity_owner.rep_comparitor]
     measures: [opportunity_owner.average_revenue_pipeline]
     listen:
-      sales_segment: opportunity_owner.department_select
       sales_rep: opportunity_owner.name_select 
     sorts: [opportunity_owner.rep_comparitor]
     limit: 500
