@@ -3,13 +3,6 @@
   layout: tile
   tile_size: 100
 
-  filters:
-  
-  - name: state
-    type: field_filter
-    explore: account
-    field: account.billing_state
-
   elements:
   
   - name: total_active_customers
@@ -17,12 +10,10 @@
     type: single_value
     model: salesforce
     explore: account
-    measures: [account.count]
-    listen:
-      state: account.billing_state
+    measures: [account.customer_count]
     filters:
       account.type: '"Customer"'
-    sorts: [account.count desc]
+    sorts: [account.customer_count desc]
     font_size: medium
     text_color: '#49719a'
     height: 2
@@ -33,11 +24,11 @@
     type: single_value
     model: salesforce
     explore: opportunity
-    measures: [opportunity.total_revenue]
+    measures: [opportunity.amount]
     filters:
       opportunity.close_date: this quarter
       opportunity.stage_name: '"Closed Won"'
-    sorts: [opportunity.total_revenue desc]
+    sorts: [opportunity.amount desc]
     font_size: medium
     text_color: black
     height: 2
@@ -64,8 +55,6 @@
     model: salesforce
     explore: lead
     measures: [lead.count, opportunity.count_new_business, opportunity.count_new_business_won]
-    listen:
-      state: lead.state
     filters:
       lead.status: -%Unqualified%
       lead.created_date: this quarter
@@ -138,8 +127,6 @@
     dimensions: [account.business_segment, opportunity.forecast_category]
     pivots: [opportunity.forecast_category]
     measures: [account.count]
-    listen:
-      state: account.billing_state
     filters:
       account.business_segment: -Unknown
       opportunity.stage_name: -%Closed%

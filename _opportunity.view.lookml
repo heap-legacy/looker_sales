@@ -346,4 +346,8 @@
   - measure: count
     type: count
     drill_fields: [id, name, stage_name, forecast_category_name]
+  
+  - measure: average_deal_size
+    type: avg
+    sql: ${TABLE}.amount
 

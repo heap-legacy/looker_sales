@@ -394,4 +394,8 @@
   - measure: count
     type: count
     drill_fields: [id, name]
+  
+  - measure: customer_count
+    type: count_distinct
+    sql: ${TABLE}.id
 
