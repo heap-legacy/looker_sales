@@ -49,7 +49,7 @@
     measures: [opportunity.average_deal_size]
     filters:
       opportunity.close_date: this quarter
-      opportunity.stage_name: '"Closed -WON"'
+      opportunity.stage_name: '"Closed - WON"'
     sorts: [opportunity.average_deal_size desc]
     font_size: medium
     text_color: black
@@ -105,7 +105,7 @@
     measures: [opportunity.count]
     filters:
       opportunity.close_month: before tomorrow
-      opportunity.stage_name: '"Closed Won"'
+      opportunity.stage_name: '"Closed - WON"'
     sorts: [opportunity.close_month, account.business_segment, account.business_segment__sort_]
     limit: 500
     column_limit: 50
@@ -196,7 +196,7 @@
     measures: [account.count_customers, opportunity.total_revenue]
     filters:
       account.business_segment: -Unknown
-      opportunity.stage_name: '"Closed Won"'
+      opportunity.stage_name: '"Closed - WON"'
     sorts: [opportunity.close_month, account.business_segment, account.business_segment__sort_]
     limit: 500
     column_limit: 50
