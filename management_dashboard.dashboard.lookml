@@ -3,6 +3,13 @@
   layout: tile
   tile_size: 100
 
+  filters:
+ 
+  - name: lead_source
+    type: field_filter
+    explore: lead
+    field: lead.lead_source
+
   elements:
   
   - name: total_active_customers
@@ -12,7 +19,7 @@
     explore: account
     measures: [account.customer_count]
     filters:
-      account.type: '"Customer"'
+      account.type: '"Paying Customer"'
     sorts: [account.customer_count desc]
     font_size: medium
     text_color: '#49719a'
@@ -27,7 +34,7 @@
     measures: [opportunity.amount]
     filters:
       opportunity.close_date: this quarter
-      opportunity.stage_name: '"Closed Won"'
+      opportunity.stage_name: '"Closed - WON"'
     sorts: [opportunity.amount desc]
     font_size: medium
     text_color: black
@@ -42,7 +49,7 @@
     measures: [opportunity.average_deal_size]
     filters:
       opportunity.close_date: this quarter
-      opportunity.stage_name: '"Closed Won"'
+      opportunity.stage_name: '"Closed -WON"'
     sorts: [opportunity.average_deal_size desc]
     font_size: medium
     text_color: black
@@ -58,6 +65,8 @@
     filters:
       lead.status: -%Unqualified%
       lead.created_date: this quarter
+    listen:
+      lead_source: lead.lead_source
     sorts: [lead.count desc]
     limit: 500
     query_timezone: America/Los_Angeles
