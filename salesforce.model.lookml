@@ -59,7 +59,7 @@
       relationship: many_to_one  
   
     - join: task
-      sql_on: ${lead.converted_contact_id} = ${task.account_id}
+      sql_on: ${lead.converted_account_id} = ${task.account_id}
       relationship: many_to_one
 
 - explore: opportunity
@@ -82,6 +82,10 @@
     - join: opportunity_owner
       from: user
       sql_on: ${opportunity.owner_id} = ${opportunity_owner.id}
+      relationship: many_to_one
+    
+    - join: task
+      sql_on: ${opportunity.account_id} = ${task.account_id}
       relationship: many_to_one
    
 - explore: task
