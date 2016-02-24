@@ -39,6 +39,7 @@
       sales_rep: opportunity_owner.name
     filters:
       opportunity.close_date: 'this quarter'
+      opportunity.stage_name: '"Closed - WON"'
     limit: 500
     font_size: small
     text_color: '#49719a'

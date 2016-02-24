@@ -193,7 +193,7 @@
     model: salesforce
     explore: opportunity
     dimensions: [account.business_segment]
-    measures: [account.count_customers, opportunity.total_revenue]
+    measures: [account.count, opportunity.total_revenue]
     filters:
       account.business_segment: -Unknown
       opportunity.stage_name: '"Closed - WON"'

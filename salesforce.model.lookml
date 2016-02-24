@@ -25,7 +25,7 @@
       from: user
       sql_on: ${account.owner_id} = ${account_owner.id}
       relationship: many_to_one
-
+  
 
 - explore: lead
   sql_always_where: |
@@ -56,7 +56,7 @@
     - join: opportunity_owner
       from: user
       sql_on: ${opportunity.owner_id} = ${opportunity_owner.id}
-      relationship: many_to_one      
+      relationship: many_to_one  
 
 
 - explore: opportunity
@@ -80,3 +80,4 @@
       from: user
       sql_on: ${opportunity.owner_id} = ${opportunity_owner.id}
       relationship: many_to_one
+   
