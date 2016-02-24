@@ -220,12 +220,44 @@
     y_axis_orientation: [left, right]
     show_null_labels: false
     
-  - name: rep_roster_and_total_pipeline_revenue
-    title: 'Rep Roster By Average Annual Revenue and Total Pipeline Revenue'
+  - name: closer_roster_and_total_pipeline_revenue
+    title: 'Closer Roster By Average Annual Revenue and Total Pipeline Revenue'
     type: looker_column
     model: salesforce
     explore: opportunity
     dimensions: [opportunity_owner.name]
+    measures: [opportunity.total_pipeline_revenue, opportunity.average_revenue_won]
+    filters:
+      opportunity_owner.name: -NULL
+      opportunity.count_won: '>0'
+    sorts: [opportunity_owner.name desc]
+    limit: 12
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    colors: ['#635189', '#b3a0dd']
+    show_value_labels: true
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    show_view_names: false
+    x_padding_right: 15
+    y_axis_combined: false
+    show_y_axis_labels: false
+    show_y_axis_ticks: false
+    y_axis_tick_density: default
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_orientation: [right]
+    x_axis_label_rotation: 0
+    show_null_labels: false
+
+  - name: sdr_roster_and_total_pipeline_revenue
+    title: 'SDR Roster By Average Annual Revenue and Total Pipeline Revenue'
+    type: looker_column
+    model: salesforce
+    explore: opportunity
+    dimensions: [opportunity.sdr__who__passed___c]
     measures: [opportunity.total_pipeline_revenue, opportunity.average_revenue_won]
     filters:
       opportunity_owner.name: -NULL

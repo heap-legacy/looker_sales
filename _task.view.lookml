@@ -1,4 +1,4 @@
-- view: _task
+- view: task
   sql_table_name: salesforce._task
   fields:
 

@@ -57,7 +57,10 @@
       from: user
       sql_on: ${opportunity.owner_id} = ${opportunity_owner.id}
       relationship: many_to_one  
-
+  
+    - join: task
+      sql_on: ${lead.converted_contact_id} = ${task.account_id}
+      relationship: many_to_one
 
 - explore: opportunity
   sql_always_where: |
@@ -81,3 +84,5 @@
       sql_on: ${opportunity.owner_id} = ${opportunity_owner.id}
       relationship: many_to_one
    
+- explore: task
+  
