@@ -10,7 +10,11 @@
     type: field_filter
     explore: account
     field: account.business_segment
-    default_value: 'Enterprise'
+  
+  - name: lead_source
+    type: field_filter
+    explore: lead
+    field: lead.lead_source  
     
   - name: date_range
     type: date_filter
@@ -33,7 +37,7 @@
       date_range: account.created_date
       sales_team: account.business_segment
     filters:
-      account.type: '"Customer"'
+      account.type: '"Paying Customer"'
     sorts: [account.count desc]
     font_size: medium
     text_color: '#49719a'
@@ -45,14 +49,14 @@
     type: single_value
     model: salesforce
     explore: opportunity
-    measures: [opportunity.total_revenue]
+    measures: [opportunity.amount]
     listen:
       state: account.billing_state
       date_range: opportunity.close_date
       sales_team: account.business_segment
     filters:
-      opportunity.stage_name: '"Closed Won"'
-    sorts: [opportunity.total_revenue desc]
+      opportunity.stage_name: '"Closed - WON"'
+    sorts: [opportunity.amount desc]
     font_size: medium
     text_color: black
     height: 2
@@ -68,7 +72,7 @@
       date_range: opportunity.close_date
       sales_team: account.business_segment
     filters:
-      opportunity.stage_name: '"Closed Won"'
+      opportunity.stage_name: '"Closed - WON"'
     font_size: medium
     text_color: black
     height: 2
@@ -85,6 +89,7 @@
     listen:
       state: lead.state
       date_range: lead.created_date
+      lead_source: lead.lead_source
     sorts: [lead.count desc]
     limit: 500
     query_timezone: America/Los_Angeles
@@ -125,6 +130,7 @@
     listen:
       state: lead.state
       date_range: lead.created_date
+      lead_source: lead.lead_source
     sorts: [lead.created_month desc]
     limit: 500
     query_timezone: America/Los_Angeles

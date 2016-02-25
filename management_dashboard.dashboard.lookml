@@ -9,7 +9,7 @@
     type: field_filter
     explore: lead
     field: lead.lead_source
-
+  
   elements:
   
   - name: total_active_customers
@@ -283,3 +283,95 @@
     y_axis_orientation: [right]
     x_axis_label_rotation: 0
     show_null_labels: false
+  
+  - name: sdr_oppty_won
+    title: "SDR Opportunities Won - Table"
+    type: table
+    model: salesforce
+    explore: opportunity
+    dimensions: [opportunity.created_month, opportunity.sdr__who__passed___c]
+    pivots: [opportunity.sdr__who__passed___c]
+    measures: [opportunity.count_open, opportunity.count_won, opportunity.count_lost,
+      opportunity.count]
+    dynamic_fields:
+    - table_calculation: percent_won
+      label: Percent Won
+      expression: round(${opportunity.count_won}*100/${opportunity.count},2)
+    hidden_fields: [opportunity.count_lost, opportunity.count_open]
+    filters:
+      opportunity.created_month: 5 months
+      opportunity.sdr__who__passed___c: -%Becca%,-%Todd%,-%Shea%
+    sorts: [opportunity.sdr__who__passed___c desc, opportunity.count desc 0]
+    limit: 500
+    column_limit: 50
+    total: true
+    show_view_names: true
+    color_palette: Looker Classic
+    show_row_numbers: true
+    point_style: circle
+    interpolation: linear
+    show_null_points: true
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    ordering: none
+    show_null_labels: false
+    colors: ['#62bad4', '#a9c574', '#929292', '#9fdee0', '#1f3e5a', '#90c8ae', '#92818d',
+      '#c5c6a6', '#82c2ca', '#cee0a0', '#928fb4', '#9fc190']
+    hidden_series: [Todd Busler - Opportunity Count Won, Todd Busler - Percent Won,
+      Becca Lindquist - Opportunity Count Won, Becca Lindquist - Percent Won]
+
+  - name: sdr_percent_won
+    title: "SDR vs. None - Percent of Opportunities Won" 
+    type: looker_line
+    model: salesforce
+    explore: opportunity
+    dimensions: [opportunity.created_month, opportunity.sdr__who__passed___c]
+    pivots: [opportunity.sdr__who__passed___c]
+    measures: [opportunity.count_open, opportunity.count_won, opportunity.count_lost,
+      opportunity.count]
+    dynamic_fields:
+    - table_calculation: percent_won
+      label: Percent Won
+      expression: round(${opportunity.count_won}*100/${opportunity.count},2)
+    hidden_fields: [opportunity.count_lost, opportunity.count_open]
+    filters:
+      opportunity.created_month: 5 months
+      opportunity.sdr__who__passed___c: -%Becca%,-%Todd%,-%Shea%
+    sorts: [opportunity.sdr__who__passed___c desc, opportunity.count desc 0]
+    limit: 500
+    column_limit: 50
+    total: true
+    stacking: ''
+    colors: ['#62bad4', '#a9c574', '#929292', '#9fdee0', '#1f3e5a', '#90c8ae', '#92818d',
+      '#c5c6a6', '#82c2ca', '#cee0a0', '#928fb4', '#9fc190']
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    hidden_series: [Niket Khanna - Opportunity Count Won, Niket Khanna - Opportunity Count,
+      Carly Moore - Opportunity Count Won, Carly Moore - Opportunity Count, ∅ - Opportunity Count Won,
+      ∅ - Opportunity Count]
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    show_null_points: true
+    point_style: circle
+    interpolation: linear
