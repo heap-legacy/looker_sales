@@ -230,6 +230,14 @@
     type: running_total
     sql: ${count_new_business_won}
   
+  - measure: running_total_revenue
+    type: running_total
+    sql: ${total_revenue}
+  
+  - measure: running_average
+    type: running_total
+    sql: ${running_total_revenue}/${total_new_business_won}
+    
 - view: campaign
   extends: _campaign
   
