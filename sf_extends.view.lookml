@@ -222,6 +222,13 @@
       opportunity.type: '"New Business"'
     drill_fields: [opportunity.id, account.name, type]   
   
+  - measure: total_new_business
+    type: running_total
+    sql: ${count_new_business}
+  
+  - measure: total_new_business_won
+    type: running_total
+    sql: ${count_new_business_won}
   
 - view: campaign
   extends: _campaign
