@@ -350,4 +350,8 @@
   - measure: average_deal_size
     type: avg
     sql: ${TABLE}.amount
+  
+  - measure: total_oppties
+    type: running_total
+    sql: ${count}
 

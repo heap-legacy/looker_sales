@@ -398,4 +398,16 @@
   - measure: customer_count
     type: count_distinct
     sql: ${TABLE}.id
+  
+  - dimension: arr
+    type: number
+    sql: ${TABLE}.mrr___c * 12
+  
+  - measure: arr_total
+    type: running_total
+    sql: ${TABLE}.mrr___c * 12
+
+  - measure: total_accounts
+    type: running_total
+    sql: ${count}
 

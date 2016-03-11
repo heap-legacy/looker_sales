@@ -415,4 +415,8 @@
   - measure: count
     type: count
     drill_fields: [id, last_name, first_name, middle_name, name]
+    
+  - measure: total_leads
+    type: running_total
+    sql: ${count}
 
