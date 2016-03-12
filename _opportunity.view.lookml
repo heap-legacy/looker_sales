@@ -343,6 +343,12 @@
     type: string
     sql: ${TABLE}.use__case___c
 
+  - dimension: channel
+    sql: |
+      CASE 
+      WHEN ${lead_source} like '%OB%' or ${lead_source} ilike '%Outbound' or ${lead_source} ilike '%datanyze%' THEN 'outbound'
+      ELSE 'inbound' END
+  
   - measure: count
     type: count
     drill_fields: [id, name, stage_name, forecast_category_name]
