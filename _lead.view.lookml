@@ -415,14 +415,9 @@
   - dimension: channel
     sql: |
       CASE
-      WHEN ${lead_source} like '%OB%' or ${lead_source} ilike '%Outbound' or ${lead_source} ilike '%datanyze%' THEN ${outbound}
-      ELSE ${inbound} END
+      WHEN ${lead_source} like '%OB%' or ${lead_source} ilike '%Outbound' or ${lead_source} ilike '%datanyze%' THEN "outbound"
+      ELSE "inbound" END
   
-  - dimension: outbound
-    type: string
-  
-  - dimension: inbound
-    type: string
     
   - measure: count
     type: count
