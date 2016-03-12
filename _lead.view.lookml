@@ -412,6 +412,18 @@
     type: string
     sql: ${TABLE}.website___c
 
+  - dimension: channel
+    sql: |
+      CASE
+      WHEN ${lead_source} like '%OB%' or ${lead_source} ilike '%Outbound' or ${lead_source} ilike '%datanyze%' THEN ${outbound}
+      ELSE ${inbound} END
+  
+  - dimension: outbound
+    type: string
+  
+  - dimension: inbound
+    type: string
+    
   - measure: count
     type: count
     drill_fields: [id, last_name, first_name, middle_name, name]
