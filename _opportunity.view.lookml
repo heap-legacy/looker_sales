@@ -360,4 +360,9 @@
   - measure: total_oppties
     type: running_total
     sql: ${count}
+    direction: column
+  
+  - measure: row_total_ops
+    type: running_total
+    sql: ${count}
 

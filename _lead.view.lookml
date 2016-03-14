@@ -426,4 +426,10 @@
   - measure: total_leads
     type: running_total
     sql: ${count}
+    direction: column
+  
+  - measure: row_total_leads
+    type: running_total
+    sql: ${count}
+  
 

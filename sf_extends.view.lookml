@@ -225,16 +225,36 @@
   - measure: total_new_business
     type: running_total
     sql: ${count_new_business}
+    direction: column
+  
+  - measure: row_total_new_business
+    type: running_total
+    sql: ${count_new_business}
   
   - measure: total_new_business_won
     type: running_total
     sql: ${count_new_business_won}
-  
+    direction: column
+
+  - measure: row_total_new_business_won
+    type: running_total
+    sql: ${count_new_business_won}
+    
   - measure: running_total_revenue
+    type: running_total
+    sql: ${total_revenue}
+    direction: column
+  
+  - measure: row_running_total_revenue
     type: running_total
     sql: ${total_revenue}
   
   - measure: running_average
+    type: running_total
+    sql: ${running_total_revenue}/${total_new_business_won}
+    direction: column
+  
+  - measure: row_running_average
     type: running_total
     sql: ${running_total_revenue}/${total_new_business_won}
     
