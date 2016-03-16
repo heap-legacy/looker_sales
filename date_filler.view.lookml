@@ -6,8 +6,7 @@
            , COUNT(*) AS event_count
        FROM (
             SELECT
-                DATE_ADD('2001-01-01', INTERVAL numbers.number DAY) AS date
-                --DATEADD(day,number::int,'2001-01-01') AS date 
+                DATEADD(day,number::int,'2001-01-01') AS date 
             FROM 
                 (SELECT 
                     p0.n 
