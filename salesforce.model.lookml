@@ -87,9 +87,8 @@
     - join: task
       sql_on: ${opportunity.account_id} = ${task.account_id}
       relationship: many_to_one
+    
    
 - explore: task
-
-- explore: date_filler
 
   
