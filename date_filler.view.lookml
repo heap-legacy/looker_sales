@@ -27,7 +27,7 @@
                     (SELECT 0 as n UNION SELECT 1) p5,
                     (SELECT 0 as n UNION SELECT 1) p6,
                     (SELECT 0 as n UNION SELECT 1) p7) as numbers) as general_date
-                   LEFT JOIN events
+                   LEFT JOIN salesforce._leads
                    ON salesforce._leads.created = general_date.date
 
   fields:
