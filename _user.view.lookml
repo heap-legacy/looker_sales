@@ -499,6 +499,12 @@
   - dimension: username
     type: string
     sql: ${TABLE}.username
+  
+  - dimension: deal_type
+    sql: |
+      CASE 
+      WHEN ${name} like '%Shea%' THEN 'SMB'
+      ELSE 'Enterprise' END
 
   - measure: count
     type: count
