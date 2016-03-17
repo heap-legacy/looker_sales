@@ -411,7 +411,7 @@
     type: running_total
     sql: ${count}
   
-  - measure: mrr_running_total
-    type: running_total
+  - measure: mrr_total
+    type: sum
     sql: ${TABLE}.mrr___c
 
