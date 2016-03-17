@@ -410,4 +410,8 @@
   - measure: total_accounts
     type: running_total
     sql: ${count}
+  
+  - measure: mrr_running_total
+    type: running_total
+    sql: ${TABLE}.mrr___c
 
